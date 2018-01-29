@@ -12,5 +12,10 @@ We want to know when and what the user is typing into the searchbar (event handl
 The flag `--save` with NPM will save the package to our `package.json` file.
 
 ## Webpack
-
 Importing && Exporting.
+
+## State
+
+Anytime a state is changed, all the children are re-rendered as well. This can be a very expensive operation.
+
+Change the property state to.... {moar detailz}.

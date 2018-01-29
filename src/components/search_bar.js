@@ -1,31 +1,24 @@
-// const Component = React.Component; (Thematically similar to below: )
 import React, { Component } from 'react';
 
-// This is a Functional Component, because it's a function().
-// There's also a Class Component. When we want there to be
-// internal record keeping; what's happening to it, etc. To be aware.
-// "Oh hey, the user typed something into my input."
-// const SearchBar = () => {
-//     // When transpiled, this will become React.createElement, which is why we need the import statement.
-//     return <input />    
-// };
-
-// Create a new class called SearchBar, and give it all the functionality
-// from React.Component class. Every React Component that is class based must
-// have a render() method. Methods in JS Objects don't have a colon (like JSON).
-// Deciding to use a class or function component can be tough. Grider recommends
-// starting a function and as you need more internals, refactor into a class component.
 class SearchBar extends Component {
+    constructor(props) {
+        super(props);
+
+        // Need to initialize a new State object, as well as props.
+        // term is short for "search term". We want to be updating term when
+        // the user is updating the input box.
+        // Again, state is just a plain PS object. We need to initialize it.
+        // The properties in state are not pre-defined, we figure it out as devs.
+        this.state = { term: '' }; // state = object; // learn how to manipulate state
+    }
+
     render() {
-        // Certain HTML elements cause Changes. So we use `onChange` to refer to our func.
-        // onChange is a React "prop", or "property". More can be found in React docs.
-        return <input onChange={event => console.log(event.target.value)} />;
+        return (
+            <div>
+                <input onChange={event => this.setState({ term: event.target.value })} />
+            </div>
+        );
     }
 }
 
-// PROBLEM: index.js will need to be able to access SearchBar. But
-// every file is a "silo". So how can index access this function?
-// The answer is exporting the function! I.E.:
 export default SearchBar;
-
-// It's critical we export the right thing!
