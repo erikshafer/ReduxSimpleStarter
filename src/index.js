@@ -6,6 +6,8 @@ import React from 'react';
 // We need ReactDOM to be able to interact and render to the DOM.
 import ReactDOM from 'react-dom';
 
+const API_KEY = 'AIzaSyC4z84LUAjS63TYpMiSfOWOeeYVZwYN8kY';
+
 // Create a new component. This component should produce some HTML.
 // When creating a Component, we are creating a Class of a Component. Not an instance.
 // We need to instantiate before we put it in the DOM.
