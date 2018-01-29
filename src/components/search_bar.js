@@ -18,15 +18,8 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
     render() {
         // Certain HTML elements cause Changes. So we use `onChange` to refer to our func.
-        // onChange is a "prop", or "property".
-        return <input onChange={this.onInputChange} />;
-    }
-
-    // We want to pass this function to the render(). This is an event handler.
-    // All browser events caused by (various elements) are called an Event object.
-    // The param doesn't *need* to be called event, however.
-    onInputChange(event) {
-
+        // onChange is a React "prop", or "property". More can be found in React docs.
+        return <input onChange={event => console.log(event.target.value)} />;
     }
 }
 
