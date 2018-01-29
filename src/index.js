@@ -5,6 +5,10 @@
 import React from 'react';
 // We need ReactDOM to be able to interact and render to the DOM.
 import ReactDOM from 'react-dom';
+// Import from the handmade component `search_bar.js`.
+// Whenever we important something we make, we have to give a file reference.
+// E.G. we need to include the current directory and point it to the components dir.
+import SearchBar from './components/search_bar';
 
 const API_KEY = 'AIzaSyC4z84LUAjS63TYpMiSfOWOeeYVZwYN8kY';
 
@@ -16,7 +20,11 @@ const API_KEY = 'AIzaSyC4z84LUAjS63TYpMiSfOWOeeYVZwYN8kY';
 // }
 // ES6: More or less, using a fat arrow is identical-ish to using the function keyword.
 const App = () => {
-    return <div>Hi!</div>;
+    return (
+        <div>
+            <SearchBar />
+        </div>
+    );
 }
 
 
