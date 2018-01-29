@@ -1,4 +1,5 @@
-import React from 'react';
+// const Component = React.Component; (Thematically similar to below: )
+import React, { Component } from 'react';
 
 // This is a Functional Component, because it's a function().
 // There's also a Class Component. When we want there to be
@@ -12,7 +13,9 @@ import React from 'react';
 // Create a new class called SearchBar, and give it all the functionality
 // from React.Component class. Every React Component that is class based must
 // have a render() method. Methods in JS Objects don't have a colon (like JSON).
-class SearchBar extends React.Component {
+// Deciding to use a class or function component can be tough. Grider recommends
+// starting a function and as you need more internals, refactor into a class component.
+class SearchBar extends Component {
     render() {
         return <input />;
     }
