@@ -19,3 +19,7 @@ Importing && Exporting.
 Anytime a state is changed, all the children are re-rendered as well. This can be a very expensive operation.
 
 Change the property state to.... {moar detailz}.
+
+There is no imperative update, it's much more declarative. This allows us to do more useful things.
+Let's say we want default input. Not grayed out text, but an actual value. A starting value.
+Like... A player character's name!
