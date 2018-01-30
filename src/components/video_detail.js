@@ -6,6 +6,7 @@ const VideoDetail = ({video}) => {
   if (!video) {
     return <div>Loading...</div>;
   }
+
   const videoId = video.id.videoId; // A little confusing. Gee whiz.
   const url = `https://www.youtube.com/embed/${videoId}`; // More ES6 syntax
 
