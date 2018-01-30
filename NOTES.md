@@ -23,3 +23,6 @@ Change the property state to.... {moar detailz}.
 There is no imperative update, it's much more declarative. This allows us to do more useful things.
 Let's say we want default input. Not grayed out text, but an actual value. A starting value.
 Like... A player character's name!
+
+## Downward Data Flow
+We want the parent component to fetch the data. At the beginning of section-02, that parent is the `index.js`. 
