@@ -2,26 +2,24 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 const API_KEY = 'AIzaSyC4z84LUAjS63TYpMiSfOWOeeYVZwYN8kY';
 
-// This class will start, and the constructor will be called.
-// State will be updated with an array.
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { videos: [] }; // A list of objects. Not pre-populated.
-
+    this.state = { videos: [] };
     YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
-      this.setState({ videos }); // Update state. V: videos, K: data.
-      // this.setState({ videos: videos }); // ONLY uses in ES6 when key and var are same.
+      this.setState({ videos }); 
     });
   }
 
+  // Here, we are setting the prop videos to an item(s) in state.
   render() {
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
