@@ -3,6 +3,9 @@ import React from 'react';
 // Don't need to call the param `props`, we can use ES6 syntax sugar
 // to get JUST the video property. E.G. `props.video`
 const VideoDetail = ({video}) => {
+  if (!video) {
+    return <div>Loading...</div>;
+  }
   const videoId = video.id.videoId; // A little confusing. Gee whiz.
   const url = `https://www.youtube.com/embed/${videoId}`; // More ES6 syntax
 
