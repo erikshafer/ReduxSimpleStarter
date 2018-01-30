@@ -1,36 +1,45 @@
-// All code we write in separate files, is siloed in other files we produce,
-// will have 0% access to other files unless we explicitly list we need
-// access to it. That includes needing access to React itself. This is
-// due to JavaScript Modules.
-import React from 'react';
-// We need ReactDOM to be able to interact and render to the DOM.
+import _ from 'lodash';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-// Import from the handmade component `search_bar.js`.
-// Whenever we important something we make, we have to give a file reference.
-// E.G. we need to include the current directory and point it to the components dir.
+import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
-
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 const API_KEY = 'AIzaSyC4z84LUAjS63TYpMiSfOWOeeYVZwYN8kY';
 
-// Create a new component. This component should produce some HTML.
-// When creating a Component, we are creating a Class of a Component. Not an instance.
-// We need to instantiate before we put it in the DOM.
-// const App = function () {
-//     return <div>Hi!</div>;
-// }
-// ES6: More or less, using a fat arrow is identical-ish to using the function keyword.
-const App = () => {
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { 
+      videos: [],
+      selectedVideo: null
+    };
+    this.videoSearch('surfboards');
+  }
+
+  videoSearch(term) { // New (refactored) method. It takes only one arg, the search term. It's called in <SearchBar>.
+    YTSearch({key: API_KEY, term: term}, (videos) => {
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      }); 
+    });
+  }
+
+  render() {
+    const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300);
+
     return (
-        <div>
-            <SearchBar />
-        </div>
+      <div>
+        <SearchBar onSearchTermChange={videoSearch} />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList
+          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+          videos={this.state.videos} />
+      </div>
     );
+  }
 }
-
-
-// Take this component's generated HTML and put it on the page (in the DOM).
-// Wrapping something with tags will instantiate it. From `App` to <App />`, etc.
-// Second argument is stating where it will be inserted in the DOM
-//  e.g.    document.querySelector('.container')
 
 ReactDOM.render(<App />, document.querySelector('.container'));
