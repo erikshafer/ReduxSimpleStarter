@@ -43,3 +43,5 @@ Grider recommends staying away from JS for loops. Instead, use an iterator. Map 
 React is very *smart* about generating lists from objects like arrays. There needs to be unique keys (ID). It doesn't want to regenerate/re-render the entire list when it could just look at a key and update said value.
 
 In VideoList, we've gone ahead and added `key={video.etag}`. The etag is a prop of each video, and is completely unique. We can use this prop to help React differentiate each video. A takeaway here is a good API will provide a robust set of props like hashes for such features. Using just standard IDs (01, 02, 03) may not be good enough.
+
+In short, it's a best practice to always add a key.
